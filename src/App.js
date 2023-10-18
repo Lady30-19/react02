@@ -1,12 +1,14 @@
 import logo from './logo.svg';
-import './App.css';
+//import './App.css';
 import C01componente from './pagina/C01componente';
 
 function App() {
   return (
     <div>
-      Hola mundo desde React...
       <C01componente/>
+      Hola mundo desde React...
+      <i class="large material-icons">insert_chart</i>
+      
     </div>
   );
 }
