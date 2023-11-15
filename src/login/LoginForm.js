@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useAuth } from '../ruteo/AuthContext'; // (7). Importando contexto
 import { useNavigate } from 'react-router-dom';
 
+import 'bootswatch/dist/vapor/bootstrap.min.css';
+
 function LoginForm() {
   
   const { signIn } = useAuth();                 // (7). Usando el contexto
@@ -31,21 +33,24 @@ function LoginForm() {
     }
   }
 
-  
   return (
     <div id='public'>
-      <h2>Iniciar Sesión ok</h2>
-      <form onSubmit={handleSignIn}>
-        <div>
+      <h2>Iniciar Sesion</h2>
+      <form className='card card-body' onSubmit={handleSignIn}>
+        <div className='form-group input-group'>
+        <div className='input-group-text bd-light'>
+            <i className='material-icons'>group_add</i>
+          </div>
           <label>Email:</label>
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
         </div>
         <div>
+        <i className='material-icons'>group_add</i>
           <label>Contraseña:</label>
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </div>
         {error && <p style={{ color: 'red' }}>{error}</p>}
-        <button type="submit">Iniciar Sesión</button>
+        <button className='btn btn-primary btn-block' type="submit">Iniciar Sesion</button>
       </form>
     </div>
   );

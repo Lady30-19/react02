@@ -15,23 +15,49 @@ function RegisterForm() {
   
   const navigate = useNavigate();               // Navegación
 
-  const handleRegister = (e) => { 
+  const handleRegister = async (e) => {
+    e.preventDefault();
+
+    try {
+      await register(email, password);
+      //await registerUser(email, password);    // Verifica correo ya registrado
+      navigate('/iniciarsesion'); // Redirigir a ruta /iniciarsesion
+      console.log("Se registro usuario...xxx");
+    } catch (error) {
+      console.error('Error al registrar usuario:', error.message);
+    }
   }
 
   return (
-    <div  id='public'>
+    <div>
       <h2>Registro de Nuevo Usuario</h2>
-      <form onSubmit={handleRegister}>
-        <div>
-          <label>Email:</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+
+      <form className='card card-body' onSubmit={handleRegister}> 
+
+      <button className='btn btn-primary btn-block'>
+          Registrar Usuario 
+        </button>
+
+        <div className='form-group input-group'>
+          <div className='input-group-text bd-light'>
+            <i className='material-icons'>account_circle</i>
+          </div>
+          <input className='form-control float-start' type="email"  placeholder='Edasuario...'  
+            onChange={(e) => setEmail(e.target.value)} value={email}  />
         </div>
-        <div>
-          <label>Contraseña:</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+
+        <div className='form-group input-group'>
+          <div className='input-group-text bd-light'>
+            <i className='material-icons'>lock_open</i>
+          </div>
+          <input className='form-control float-start' type='password' placeholder='Contra...'  
+            onChange={(e) => setPassword(e.target.value)} value={password}  />
         </div>
-        <button type="submit">Registrarse</button>
-      </form>
+        
+        
+        <button type="submit" className='btn btn-primary btn-block'>
+        Registrarse
+        </button>      </form>
     </div>
   );
 }

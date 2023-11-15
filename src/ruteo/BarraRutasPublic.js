@@ -11,6 +11,7 @@ import Dashboard from '../public/Dashboard';
 import Informacion from '../public/Informacion';
 import Noticia from '../public/Noticia';
 import LoginForm from '../login/LoginForm';
+import RegisterForm from '../login/RegisterForm';
 import Contacto from '../public/Contacto';
 
 const BarraRutasPublic = () => {
@@ -36,10 +37,12 @@ const BarraRutasPublic = () => {
           
           <div id="menu">
             <ul>
+             
               <li><Link to="/home">Inicio(Home)</Link> </li>
-              <li><Link to="/Informacion">Informacion</Link> </li>
-              <li><Link to="/Noticia">Noticias</Link> </li>
-              <li><Link to="/Contacto">Contacto</Link> </li>
+              <li><Link to="/Informacion">INFORMACION</Link> </li>
+              <li><Link to="/Noticias">NOTICIAS</Link> </li>
+              <li><Link to="/">Contacto</Link> </li>
+              <li><Link to="/nuevoregistro">Registrar</Link></li>
               
 
             </ul>
@@ -48,40 +51,14 @@ const BarraRutasPublic = () => {
   
         <Routes>
         <Route path="/iniciarsesion" element={<LoginForm />} />
+        <Route path="/" element={<Contacto />} />
         <Route path="/home" element={<Home />} />
         <Route path="/Informacion" element={<Informacion />} />
         <Route path="/Noticia" element={<Noticia />} />
-        <Route path="/Contacto" element={<Contacto />} />
+        <Route path="/nuevoregistro" element={<RegisterForm />} />
         </Routes> 
       </div>
     )
 }
 
 export default BarraRutasPublic;
-
-/*
-  
-                {user ? (         ////////  Para cerrar sesión   ///////////
-                <li><Link onClick={handleSignOut} > Cerrar sesión </Link> </li> 
-                ) : (
-                <li> <Link to="/Iniciarsesion">Iniciar sesión</Link> </li>
-              )}
-  
-  
-  /*
-
-
-/*
-const handleSignOut = () => {
-    if (user) {
-      signOut(auth)
-        .then(() => {
-          // Cierre de sesión exitoso
-          navigate('/home'); // Redirigir a ruta /home
-        })
-        .catch((error) => {
-          console.error('Error al cerrar sesión:', error);
-        });
-    }
-  }
-*/
